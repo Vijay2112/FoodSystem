@@ -8,7 +8,7 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from order.db_setup import insert_one_doc,find_doc,update_doc
-
+import uuid
 
 class Order(View):
 
@@ -38,10 +38,11 @@ class Order(View):
 
 		bill = Bill()
 		order_x = bill.create_order(customer_name, restaurant, item, instructions)
-		id = variables.id
+		id = str(uuid.uuid4())
+		#id = variables.id
 		order_x['_id'] = id
-		id_dummy = id
-		id+=1
+		#id_dummy = id
+		#id+=1
 
 		#Create db connection
 		self.dbconnection = MyCollection()
@@ -64,7 +65,7 @@ class Order(View):
 			return HttpResponse("<h3>Restaurant not Available</h3>")
 
 		#persist
-		bill_x = bill.create_bill(order_x,delv_list[1],id_dummy)
+		bill_x = bill.create_bill(order_x,delv_list[1],id)
 		self.insert(bill_x,2)
 		return self.display_bills()
 

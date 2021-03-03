@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid,ConnectionFailure,DuplicateKeyError,OperationFailure,PyMongoError
 
+#connection class
 class MongoConnection():
 
     def __init__(self):
@@ -20,6 +21,7 @@ class MongoConnection():
         except CollectionInvalid:
             print("Invalid collection :P")
 
+#retrieve - collection
 class MyCollection(MongoConnection):
 
     def __init__(self):
