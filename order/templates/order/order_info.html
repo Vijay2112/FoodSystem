@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<div class="container text-center">
+  
+  <h1>Place Order</h1>
+
+  <form method="POST" action="{% url 'db_update' %}">
+    {% csrf_token %}
+    Customer name: <input type="text" name="customer_name"><br/><br/>
+    Restaurant: <input type="text" name="restaurant"><br/><br/>
+    Item: <input type="text" name="item"><br/><br/>
+    Instructions: <input type="text" name="instructions"><br/><br/>
+    <button type="submit">Confirm order</button>
+  </form>
+
+</div>
